@@ -21,7 +21,7 @@ jobs:
             const username = context.payload.issue.user.login;
             const message = context.payload.comment.body;
 
-            if(context.payload.comment.user.login !== username && message.toLowerCase().includes("done")){
+            if(context.payload.comment.user.login !== username && !message.toLowerCase().includes("done")){
               return
             }
 

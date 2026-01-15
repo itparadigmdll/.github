@@ -1,0 +1,40 @@
+name: Assign Team Based on Label
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  assign-team:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Assign team based on label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = context.payload.issue.number;
+            const labels = context.payload.issue.labels.map(l => l.name);
+
+            // Map labels to team mentions
+            const teamMap = {
+              "Programmer": "itparadigmdll/programming-team",
+              "Security Analyst": "itparadigmdll/cyber-security-team",
+              "Creatives": "itparadigmdll/creatives",
+              "Documentation": "itparadigmdll/documentation-team"
+            };
+
+            for (const label of labels) {
+              if (teamMap[label]) {
+                // Add a comment tagging the team
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: `Hi @${teamMap[label]}, a new applicant has joined this issue.`
+                });
+              }
+            }
+

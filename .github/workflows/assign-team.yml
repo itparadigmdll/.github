@@ -52,7 +52,7 @@ jobs:
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: issueNumber,
-                    body: `Hi @${teamMap[label]}, a new applicant has joined this issue.`
+                    body: `Hi @${username}, you are now added to @itparadigmdll/${teamSlug}.`
                   });
                 }
               }

@@ -21,10 +21,10 @@ jobs:
             
             // Map labels to team mentions
             const teamMap = {
-              "Programmer": "itparadigmdll/programming-team",
-              "Security Analyst": "itparadigmdll/cyber-security-team",
-              "Creatives": "itparadigmdll/creatives",
-              "Documentation": "itparadigmdll/documentation-team"
+              "Programmer": "programming-team",
+              "Security Analyst": "cyber-security-team",
+              "Creatives": "creatives",
+              "Documentation": "documentation-team"
             };
 
             let teamSlug = null;
@@ -43,6 +43,7 @@ jobs:
                 username: username,
                 role: "member"  // or "maintainer" if needed
               });
+
               for (const label of labels) {
                 if (teamMap[label]) {
                   // Add a comment tagging the team

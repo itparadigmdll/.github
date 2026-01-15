@@ -22,7 +22,6 @@ body:
     id: role
     attributes:
       label: Role you want to apply for?
-      description: Select a role that fits to you.
       options:
         - Programmer
         - Security Analysts

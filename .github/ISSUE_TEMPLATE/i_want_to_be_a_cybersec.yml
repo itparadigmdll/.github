@@ -18,7 +18,7 @@ body:
     validations:
       required: true
   
-  - type: Markdown
+  - type: markdown
     attributes:
       value: Cyber Security
 

@@ -26,15 +26,38 @@ jobs:
               "Documentation": "itparadigmdll/documentation-team"
             };
 
+            let teamSlug = null;
             for (const label of labels) {
               if (teamMap[label]) {
-                // Add a comment tagging the team
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  body: `Hi @${teamMap[label]}, a new applicant has joined this issue.`
-                });
+                teamSlug = teamMap[label];
+                break;
               }
             }
+
+
+            if(teamSlug){
+              await github.rest.teams.addOrUpdateMembershipForUserInOrg({
+                org: "itparadigmdll",
+                team_slug: teamSlug,
+                username: username,
+                role: "member"  // or "maintainer" if needed
+              });
+              for (const label of labels) {
+                if (teamMap[label]) {
+                  // Add a comment tagging the team
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    body: `Hi @${teamMap[label]}, a new applicant has joined this issue.`
+                  });
+                }
+              }
+            }
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              state: "closed"
+            });
 

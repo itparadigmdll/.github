@@ -22,10 +22,10 @@ jobs:
             
             // Map labels to team mentions
             const teamMap = {
-              "Programmer": "itparadigmdll/programming-team",
-              "Security Analyst": "itparadigmdll/cyber-security-team",
-              "Creatives": "itparadigmdll/creatives",
-              "Documentation": "itparadigmdll/documentation-team"
+              "Programmer": "programming-team",
+              "Security Analyst": "cyber-security-team",
+              "Creatives": "creatives",
+              "Documentation": "documentation-team"
             };
 
             let teamSlug = null;
@@ -42,7 +42,7 @@ jobs:
                 org: "itparadigmdll",
                 team_slug: teamSlug,
                 username: username,
-                role: "member"  // or "maintainer" if needed
+                role: "member"
               });
 
               for (const label of labels) {
@@ -52,7 +52,7 @@ jobs:
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: issueNumber,
-                    body: `Hi @${username}, you are now added to @itparadigmdll/${teamSlug}.`
+                    body: `Hi @${username}, you are now added to @itparadigmdll/${teamMap[label]}.`
                   });
                 }
               }

@@ -57,7 +57,7 @@ jobs:
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: issueNumber,
-                    body: `Hi @${username}, you are now added to @itparadigmdll/${teamMap[label]}.`
+                    body: `Hi @${username}, you are now added to @itparadigmdll/${teamMap[label]}. Thank you for joining with us, and keep grinding and sharing.`
                   });
                 }
               }

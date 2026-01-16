@@ -169,6 +169,6 @@ Once you've completed the joining process, you'll be part of our vibrant communi
 
 ---
 
-**Ready to join?** Head over to https://github.com/itparadigmdll/I-want-to-join and create your issue today!
+**Ready to join?** Head over to https://github.com/itparadigmdll/.github and create your issue today!
 
 _This repository is maintained by the DLL IT Paradigm organization administrators._

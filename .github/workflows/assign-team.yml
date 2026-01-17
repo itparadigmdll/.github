@@ -22,7 +22,7 @@ jobs:
             const author = issue.user.login;
 
             const { data } = await github.rest.search.issuesAndPullRequests({
-              q: `repo:${owner}/${repo} is:issue is:open author:${author}`
+              q: `repo:${owner}/${repo} is:issue is:closed author:${author}`
             });
 
             const otherIssues = data.items.filter(i => i.number !== issue.number);

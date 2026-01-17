@@ -129,3 +129,9 @@ jobs:
               state: "closed"
             });
 
+            await github.rest.issues.lock({
+                owner,
+                repo,
+                issue_number: issue.number,
+                lock_reason: "resolved"
+              });
